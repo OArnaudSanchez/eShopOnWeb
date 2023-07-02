@@ -2,7 +2,7 @@ param webAppName string = uniqueString(resourceGroup().id)// Generate unique Str
 param sku string = 'B1' // The SKU of App Service Plan
 param location string = resourceGroup().location
 
-var appServicePlanName = toLower('AppServicePlan-${webAppName}')
+var appServicePlanName = 'ASP-devopsRG-8ff5'
 var tagName = 'Proyecto'
 var tagValue = 'Practicas DevOps'
 
