@@ -3,6 +3,8 @@ param sku string = 'B1' // The SKU of App Service Plan
 param location string = resourceGroup().location
 
 var appServicePlanName = toLower('AppServicePlan-${webAppName}')
+var tagName = 'Proyecto'
+var tagValue = 'Practicas DevOps'
 
 resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
   name: appServicePlanName
@@ -14,6 +16,9 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2020-06-01' = {
     name: sku
   }
   kind: 'app'
+  tags: {
+    tagName: tagValue
+  }
 }
 resource appService 'Microsoft.Web/sites@2020-06-01' = {
   name: webAppName
@@ -24,5 +29,8 @@ resource appService 'Microsoft.Web/sites@2020-06-01' = {
     siteConfig: {
       linuxFxVersion: 'DOTNETCORE|6.0'
     }
+  }
+tags: {
+    tagName: tagValue
   }
 }
